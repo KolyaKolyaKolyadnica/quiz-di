@@ -1,0 +1,25 @@
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation {
+  display: flex;
+  justify-content: space-between;
+
+  width: 60%;
+}
+
+table,
+th,
+td {
+  /* outline: 2px solid #000; */
+}
+
+th,
+td {
+  padding: 5px;
+  border: none;
+}

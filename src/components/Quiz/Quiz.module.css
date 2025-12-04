@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  height: 660px;
+}
+.table {
+  position: relative;
+  z-index: 1;
+}
+.category {
+  width: 200px;
+  /* background-color: var(--bg-gray-700); */
+  color: var(--black);
+  font-size: 36px;
+  font-weight: bold;
+}

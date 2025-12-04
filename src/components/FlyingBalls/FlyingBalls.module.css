@@ -1,0 +1,38 @@
+.ballContainer {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+}
+.ball {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  background-color: rgb(205, 0, 0);
+
+  position: absolute;
+  /* left: -10%;
+    top: 70%; */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  animation: running-ball linear 1s infinite reverse;
+  /* animation: name duration timing-function delay iteration-count direction
+      fill-mode; */
+}
+
+@keyframes running-ball {
+  0% {
+    transform: scale(10);
+  }
+  100% {
+    left: 50%;
+    top: 50%;
+  }
+}

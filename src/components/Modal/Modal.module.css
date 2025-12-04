@@ -1,0 +1,25 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--bg-gray-500-10);
+  z-index: 99999;
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.75);
+  width: auto;
+  height: auto;
+  padding: 16px;
+  transition: .2s all 0s linear;
+}
+.modalOpen {
+  transform: translate(-50%, -50%) scale(1); 
+  opacity: 1;
+}
