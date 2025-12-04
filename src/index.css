@@ -39,6 +39,7 @@ button {
   cursor: pointer;
   transition: all 1s ease-out;
 }
+
 button:hover {
   border-radius: 8px;
 }
