@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/quiz-di/static/css/main.879863b9.css",
-    "main.js": "/quiz-di/static/js/main.69336411.js",
+    "main.css": "/quiz-di/static/css/main.68d14a4f.css",
+    "main.js": "/quiz-di/static/js/main.b70f52a5.js",
+    "static/media/mixkit-vintage-telephone-ringtone-1356.wav": "/quiz-di/static/media/mixkit-vintage-telephone-ringtone-1356.9c1ed3138ef3bf87370c.wav",
+    "static/media/koala.jpg": "/quiz-di/static/media/koala.9dbfad9d56b9370829e7.jpg",
+    "static/media/photo__x.jpg": "/quiz-di/static/media/photo_5319271719010766001_x.69cb13c406383762f402.jpg",
     "index.html": "/quiz-di/index.html",
-    "main.879863b9.css.map": "/quiz-di/static/css/main.879863b9.css.map",
-    "main.69336411.js.map": "/quiz-di/static/js/main.69336411.js.map"
+    "main.68d14a4f.css.map": "/quiz-di/static/css/main.68d14a4f.css.map",
+    "main.b70f52a5.js.map": "/quiz-di/static/js/main.b70f52a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.879863b9.css",
-    "static/js/main.69336411.js"
+    "static/css/main.68d14a4f.css",
+    "static/js/main.b70f52a5.js"
   ]
 }
