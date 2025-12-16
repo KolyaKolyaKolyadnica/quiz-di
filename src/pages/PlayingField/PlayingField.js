@@ -26,13 +26,7 @@ function PlayingField({ game, backToMenu }) {
 
   return (
     <div className={style.container}>
-      <Navigation
-        name={name}
-        backToMenu={backToMenu}
-        createPlayersList={() =>
-          setPlayersControllerModal(!playersControllerModal)
-        }
-      />
+      <Navigation />
 
       <Quiz
         categories={categories}

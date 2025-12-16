@@ -1,23 +1,9 @@
 .container {
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 }
-.navigation {
-  display: flex;
-  justify-content: space-between;
-
-  width: 60%;
-}
-
-table,
-th,
-td {
-  /* outline: 2px solid #000; */
-}
-
 th,
 td {
   padding: 5px;

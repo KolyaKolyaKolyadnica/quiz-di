@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Modal from "../Modal";
 import style from "./QuizQuestion.module.css";
+import Timer from "../Timer";
+import Koala from "../../assets/koala.jpg";
 
 function QuizQuestion({ point, showScore }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
 
-  const { cost, question, answer } = point;
+  const { cost, question, answer, img } = point;
 
   if (status === "cost") {
     return (
@@ -15,19 +17,36 @@ function QuizQuestion({ point, showScore }) {
       </td>
     );
   }
+
   if (status === "question") {
     return (
       <>
         <td></td>
 
-        <Modal onClose={() => alert("Тицьни на кнопку 'Дізнатись відповідь'")}>
-          <div className={style.container}>
-            <p className={style.textMain}>{question}</p>
-            <button className="greenBtn" onClick={() => setStatus("answer")}>
-              Дізнатись відповідь
-            </button>
-          </div>
-        </Modal>
+        {showModal && (
+          <Modal
+            onClose={() => {
+              const isOk = window.confirm(
+                "Пропустити це питання? (воно буде прибране і бали не зарахуються нікому)"
+              );
+              if (isOk) {
+                setShowModal(false);
+              }
+
+              // setShowModal(false);
+            }}
+          >
+            <div className={style.container}>
+              <p className={style.textMain}>{question}</p>
+
+              <Timer
+                handleAnswer={() => {
+                  setStatus("answer");
+                }}
+              />
+            </div>
+          </Modal>
+        )}
       </>
     );
   }
@@ -43,16 +62,25 @@ function QuizQuestion({ point, showScore }) {
               <p className={style.textMain}>
                 <span className={style.textComment}>Відповідь:</span>
                 {answer}
+                {img && (
+                  <img
+                    className={style.image}
+                    src={Koala}
+                    alt="Ілюстрація до питання"
+                  />
+                )}
               </p>
-              <button
-                className="greenBtn"
-                onClick={() => {
-                  showScore({ question, cost });
-                  setShowModal(false);
-                }}
-              >
-                Зарахувати бали.
-              </button>
+              <div className="modal-button-container">
+                <button
+                  className=""
+                  onClick={() => {
+                    showScore({ question, cost });
+                    setShowModal(false);
+                  }}
+                >
+                  Зарахувати бали.
+                </button>
+              </div>
             </div>
           </Modal>
         )}

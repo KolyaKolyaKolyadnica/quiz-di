@@ -8,6 +8,7 @@ import PlayersController from "./PlayersController";
 import { useDispatch, useSelector } from "react-redux";
 
 import playersActions from "../redux/actions";
+import Logo from "../assets/photo_5319271719010766001_x.jpg";
 
 const pages = {
   MENU: "menu",
@@ -46,7 +47,7 @@ function App() {
           <>
             <div className="startMenuContainer">
               <button onClick={() => setShowModal(!showModal)}>
-                Почати
+                <img src={Logo} />
               </button>
             </div>
           </>

@@ -7,7 +7,7 @@ const modalRoot = document.querySelector("#modal-root");
 
 function Modal({ children, onClose }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const closeByEsc = (e) => {
     if (e.code === "Escape") {
       onClose(e);
@@ -32,7 +32,9 @@ function Modal({ children, onClose }) {
 
   return createPortal(
     <div className={style.overlay} onClick={clickOnOverlay}>
-      <div className={`${style.modal} ${isOpen ? style.modalOpen : ""}`}>{children}</div>
+      <div className={`${style.modal} ${isOpen ? style.modalOpen : ""}`}>
+        {children}
+      </div>
     </div>,
     modalRoot
   );

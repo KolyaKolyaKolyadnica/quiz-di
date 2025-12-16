@@ -17,28 +17,23 @@ function ScoreEdit({ costOfQuestion, closeModal }) {
     <div className={style.container}>
       <h2 className={style.title}>Хто ж відповів вірно?</h2>
 
-
       <div className={style.listContainer}>
         <ul className={style.list}>
           {players.map((player, index) => (
             <li
               key={player}
-              onClick={() => changeScore(costOfQuestion, index)}
+              onClick={() => changeScore(1, index)}
               className={style.listItem}
             >
-              <span>
-                {player} : {score[index]} балів
-              </span>
-              + {costOfQuestion}
+              <span>{player}</span>+ {1}
             </li>
           ))}
         </ul>
       </div>
 
-
-      <button className="redBtn" onClick={() => closeModal()}>
-        А ні хто не вгадав
-      </button>
+      <div className="modal-button-container">
+        <button onClick={() => closeModal()}>Ні хто не вгадав</button>
+      </div>
     </div>
   );
 }

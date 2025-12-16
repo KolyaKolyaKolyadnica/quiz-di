@@ -1,32 +1,18 @@
-import { useState } from "react";
-import Modal from "../Modal";
-import Score from "../Score";
 import style from "./Navigation.module.css";
+import { useSelector } from "react-redux";
 
-function Navigation({ name, backToMenu, players, playersScore }) {
-  const [showModal, setShowModal] = useState(false);
+function Navigation() {
+  const players = useSelector((state) => state.playersList.players);
+  const score = useSelector((state) => state.playersList.score);
+
   return (
-    <>
-      <div className={style.navigation}>
-        <button
-          type="button"
-          onClick={() => setShowModal(!showModal)}
-          className={style.btn}
-        >
-          Перевірити результат
-        </button>
-
-        <button type="button" onClick={backToMenu} className={style.btn}>
-          На головну
-        </button>
-      </div>
-
-      {showModal && (
-        <Modal onClose={() => setShowModal(!showModal)}>
-          <Score players={players} playersScore={playersScore} />
-        </Modal>
-      )}
-    </>
+    <ol className={style.list}>
+      {players.map((player, index) => (
+        <li key={player + index} className={style.listItem}>
+          {player} : <span>{score[index]} балів</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 

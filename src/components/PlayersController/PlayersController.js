@@ -29,7 +29,7 @@ export default function PlayersController({ onClickStartGame }) {
   return (
     <div className={style.container}>
       <h2 className={style.title}>Запиши усіх гравців.</h2>
-      
+
       <form onSubmit={addNewPlayer} className={style.form}>
         <input
           type="text"
@@ -47,9 +47,9 @@ export default function PlayersController({ onClickStartGame }) {
       <div className={style.listContainer}>
         <ol className={style.list}>
           {players.map((player, index) => (
-            <li key={index} className={style.listItem}>
+            <li key={player + index} className={style.listItem}>
               <div className={style.listItemContentContainer}>
-                <span>{player}</span>
+                {player}
 
                 <button
                   className={`${style.btn} ${style.red}`}
@@ -66,9 +66,11 @@ export default function PlayersController({ onClickStartGame }) {
         </ol>
       </div>
 
-      <button onClick={onClickStartGame} className={style.startButton}>
-        Поїхали!
-      </button>
+      <div className="modal-button-container">
+        <button onClick={onClickStartGame} className={style.startButton}>
+          Поїхали!
+        </button>
+      </div>
     </div>
   );
 }

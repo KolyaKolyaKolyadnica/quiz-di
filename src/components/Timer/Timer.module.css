@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.time {
+  font-size: 44px;
+  align-self: center;
+  color: green;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  max-width: 130px;
+  padding: 8px;
+  /* padding: 4px; */
+  /* background: var(--bg-gray-700); */
+  /* color: var(--white-500); */
+  /* border: 1px solid #000; */
+}

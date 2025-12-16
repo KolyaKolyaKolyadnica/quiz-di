@@ -16,10 +16,12 @@
   transform: translate(-50%, -50%) scale(0.75);
   width: auto;
   height: auto;
-  padding: 16px;
-  transition: .2s all 0s linear;
+  padding: 40px;
+  transition: 0.2s all 0s linear;
+
+  background: var(--bg-gray-700);
 }
 .modalOpen {
-  transform: translate(-50%, -50%) scale(1); 
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }

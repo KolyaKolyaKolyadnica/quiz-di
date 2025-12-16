@@ -11,10 +11,9 @@ function Quiz({ categories, showScore, doneQuestions }) {
     <div className={style.container}>
       <table className={style.table}>
         <tbody>
-          {categories.map((category) => {
+          {categories.map((category, index) => {
             return (
-              <tr key={category.name}>
-                <th className={style.category}>{category.name}</th>
+              <tr key={category.name + index}>
                 <QuizCategory category={category} showScore={showScore} />
               </tr>
             );

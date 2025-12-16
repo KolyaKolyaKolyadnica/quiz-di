@@ -1,7 +1,7 @@
 td {
   display: inline-block;
-  width: 200px;
-  height: 120px;
+  width: 250px;
+  height: 170px;
 
   text-align: center;
 }
@@ -14,10 +14,10 @@ td > div {
 }
 .cost {
   background: var(--bg-gray-700);
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
   color: rgb(209, 209, 209);
-  transition: 1s all 0s linear;
+  transition: 0.3s all 0s linear;
 }
 .cost:hover {
   box-shadow: 0px 0px 14px rgb(99, 99, 99);
@@ -39,21 +39,23 @@ td > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--bg-gray-500);
+  background: var(--bg-gray-700);
+  padding: 40px;
+  gap: 40px;
 
   border: 1px solid #000;
-  border-radius: 15px;
   overflow: hidden;
-
   overflow-y: auto;
-  padding-bottom: 40px;
+
+  border: 2px solid var(--white-700);
 }
 .textMain {
-  display: block;
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
   font-size: 40px;
   font-weight: bold;
   text-align: center;
+  color: var(--white-500);
 }
 .textComment {
   display: block;
@@ -69,9 +71,6 @@ td > div {
   font-size: 24px;
   box-shadow: 0px 5px #000;
 }
-
-/* Гарний червоий колір */
-/* background-color: rgb(128, 32, 0); */
 
 .btn:hover {
   transform: translate(0px, 5px);
