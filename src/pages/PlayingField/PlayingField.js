@@ -26,6 +26,7 @@ function PlayingField({ game, backToMenu }) {
 
   return (
     <div className={style.container}>
+      {/* <img src={require("../../assets/bg-owl.jpeg")} alt="owl" /> */}
       <Navigation />
 
       <Quiz

@@ -49,6 +49,9 @@ td > div {
 
   border: 2px solid var(--white-700);
 }
+.questionContainer {
+  display: flex;
+}
 .textMain {
   display: flex;
   flex-direction: column;
@@ -56,6 +59,7 @@ td > div {
   font-weight: bold;
   text-align: center;
   color: var(--white-500);
+  white-space: pre-line;
 }
 .textComment {
   display: block;

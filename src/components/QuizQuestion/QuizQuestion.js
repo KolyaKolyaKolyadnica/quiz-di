@@ -3,12 +3,13 @@ import Modal from "../Modal";
 import style from "./QuizQuestion.module.css";
 import Timer from "../Timer";
 import Koala from "../../assets/koala.jpg";
+import Notr from "../../assets/notr.png";
 
 function QuizQuestion({ point, showScore }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
 
-  const { cost, question, answer, img } = point;
+  const { cost, question, answer, img, questionImg } = point;
 
   if (status === "cost") {
     return (
@@ -32,12 +33,19 @@ function QuizQuestion({ point, showScore }) {
               if (isOk) {
                 setShowModal(false);
               }
-
-              // setShowModal(false);
             }}
           >
             <div className={style.container}>
-              <p className={style.textMain}>{question}</p>
+              <div className={style.questionContainer}>
+                <p className={style.textMain}>{question}</p>
+                {questionImg && (
+                  <img
+                    className={style.image}
+                    src={Notr}
+                    alt="Ілюстрація до питання"
+                  />
+                )}
+              </div>
 
               <Timer
                 handleAnswer={() => {
