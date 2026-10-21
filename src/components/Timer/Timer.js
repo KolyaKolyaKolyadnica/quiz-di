@@ -10,7 +10,9 @@ function Timer({ status, onStatusChange, handleAnswer }) {
   const [secondsLeft, setSecondsLeft] = useState(DURATION);
 
   useEffect(() => {
-    if (status !== "running") return;
+    if (status !== "running") {
+      return;
+    }
 
     if (secondsLeft === 0) {
       onStatusChange("over");
@@ -26,7 +28,9 @@ function Timer({ status, onStatusChange, handleAnswer }) {
   }, [status, secondsLeft, onStatusChange]);
 
   useEffect(() => {
-    if (status !== "over") return;
+    if (status !== "over") {
+      return;
+    }
 
     const audio = new Audio(ringSound);
     audio.currentTime = 0;

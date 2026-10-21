@@ -30,7 +30,9 @@ function YouTubeVideo({ videoId, timerStatus, onStart }) {
   useEffect(() => {
     let isMounted = true;
 
-    loadYouTubeApi().then((YT) => {
+    const initPlayer = async () => {
+      const YT = await loadYouTubeApi();
+
       if (!isMounted) {
         return;
       }
@@ -57,7 +59,9 @@ function YouTubeVideo({ videoId, timerStatus, onStart }) {
             setIsPlaying(data === YT.PlayerState.PLAYING),
         },
       });
-    });
+    };
+
+    initPlayer();
 
     return () => {
       isMounted = false;
