@@ -1,6 +1,6 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 
-import playersActions from "./actions";
+import playersActions, { gameActions } from "./actions";
 
 const players = createReducer([], (builder) => {
   builder
@@ -25,6 +25,12 @@ const score = createReducer([], (builder) => {
     );
 });
 
+const selectedId = createReducer(null, (builder) => {
+  builder.addCase(gameActions.selectGame, (_, { payload }) => payload);
+});
+
 const playersFromReducer = combineReducers({ players, score });
+
+export const gameReducer = combineReducers({ selectedId });
 
 export default playersFromReducer;

@@ -17,7 +17,7 @@ import {
 
 import storage from "redux-persist/lib/storage";
 
-import playersFromReducer from "./reducer";
+import playersFromReducer, { gameReducer } from "./reducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,8 +33,14 @@ const persistConfig = {
   // blacklist: ["score"], //Всё таки оставлю что бы смотреть прошлые результаты
 };
 
+const gamePersistConfig = {
+  key: "game",
+  storage,
+};
+
 const rootReducer = combineReducers({
   playersList: persistReducer(persistConfig, playersFromReducer),
+  game: persistReducer(gamePersistConfig, gameReducer),
 });
 
 const store = configureStore({

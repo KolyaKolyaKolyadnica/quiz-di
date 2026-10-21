@@ -2,10 +2,8 @@ import { useState } from "react";
 import Modal from "../Modal";
 import style from "./QuizQuestion.module.css";
 import Timer from "../Timer";
-import Koala from "../../assets/koala.jpg";
-import Notr from "../../assets/notr.png";
 
-function QuizQuestion({ point, showScore }) {
+function QuizQuestion({ point, images, showScore }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
 
@@ -41,7 +39,7 @@ function QuizQuestion({ point, showScore }) {
                 {questionImg && (
                   <img
                     className={style.image}
-                    src={Notr}
+                    src={images[questionImg]}
                     alt="Ілюстрація до питання"
                   />
                 )}
@@ -73,7 +71,7 @@ function QuizQuestion({ point, showScore }) {
                 {img && (
                   <img
                     className={style.image}
-                    src={Koala}
+                    src={images[img]}
                     alt="Ілюстрація до питання"
                   />
                 )}
@@ -82,7 +80,7 @@ function QuizQuestion({ point, showScore }) {
                 <button
                   className=""
                   onClick={() => {
-                    showScore({ question, cost });
+                    showScore();
                     setShowModal(false);
                   }}
                 >

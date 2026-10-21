@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import playersActions from "../../redux/actions";
 import style from "./ScoreEdit.module.css";
 
-function ScoreEdit({ costOfQuestion, closeModal }) {
+function ScoreEdit({ closeModal }) {
   const players = useSelector((state) => state.playersList.players);
-  const score = useSelector((state) => state.playersList.score);
 
   const dispatch = useDispatch();
 
-  const changeScore = (costOfQuestion, playerIndex) => {
-    dispatch(playersActions.increasePlayerScore(costOfQuestion, playerIndex));
+  const changeScore = (value, playerIndex) => {
+    dispatch(playersActions.increasePlayerScore(value, playerIndex));
     closeModal();
   };
 

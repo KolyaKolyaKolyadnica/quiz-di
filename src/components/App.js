@@ -1,18 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 
-import series from "../data/series.json";
+import games, { getGameById } from "../data/games";
 import PlayingField from "../pages/PlayingField";
 import Modal from "./Modal";
 import PlayersController from "./PlayersController";
 import { useDispatch, useSelector } from "react-redux";
 
-import playersActions from "../redux/actions";
-import Logo from "../assets/photo_5319271719010766001_x.jpg";
+import playersActions, { gameActions } from "../redux/actions";
 
 const pages = {
   MENU: "menu",
-  CREATE: "create",
   PLAY: "play",
 };
 
@@ -21,6 +19,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   const players = useSelector((state) => state.playersList.players);
+  const selectedGameId = useSelector((state) => state.game.selectedId);
+  const game = getGameById(selectedGameId);
 
   const dispatch = useDispatch();
 
@@ -46,8 +46,20 @@ function App() {
         {!showModal && (
           <>
             <div className="startMenuContainer">
+              <div className="gameSelect">
+                {games.map(({ id, title }) => (
+                  <button
+                    key={id}
+                    className={id === game.id ? "gameSelectActive" : ""}
+                    onClick={() => dispatch(gameActions.selectGame(id))}
+                  >
+                    {title}
+                  </button>
+                ))}
+              </div>
+
               <button onClick={() => setShowModal(!showModal)}>
-                <img src={Logo} />
+                <img src={game.logo} alt={game.title} />
               </button>
             </div>
           </>
@@ -64,13 +76,7 @@ function App() {
 
   if (page === pages.PLAY) {
     return (
-      <>
-        <PlayingField
-          game={series}
-          backToMenu={() => setPage(pages.MENU)}
-          players={players}
-        />
-      </>
+      <PlayingField game={game} />
     );
   }
 }

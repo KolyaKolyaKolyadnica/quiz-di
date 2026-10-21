@@ -1,12 +1,7 @@
 import QuizCategory from "../QuizCategory";
 import style from "./Quiz.module.css";
 
-function Quiz({ categories, showScore, doneQuestions }) {
-  const allQuestionsNum = categories.reduce(
-    (acc, cur) => acc + cur.points.length,
-    0
-  );
-
+function Quiz({ categories, images, showScore }) {
   return (
     <div className={style.container}>
       <table className={style.table}>
@@ -14,7 +9,11 @@ function Quiz({ categories, showScore, doneQuestions }) {
           {categories.map((category, index) => {
             return (
               <tr key={category.name + index}>
-                <QuizCategory category={category} showScore={showScore} />
+                <QuizCategory
+                  category={category}
+                  images={images}
+                  showScore={showScore}
+                />
               </tr>
             );
           })}

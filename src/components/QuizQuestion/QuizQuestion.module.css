@@ -22,17 +22,6 @@ td > div {
 .cost:hover {
   box-shadow: 0px 0px 14px rgb(99, 99, 99);
 }
-.question {
-  font-weight: bold;
-}
-.answer {
-  font-size: 18px;
-  font-weight: bold;
-  outline: 1px solid #000;
-}
-.answer > span {
-  transform: rotate(-10deg);
-}
 .container {
   min-width: 500px;
   height: auto;
@@ -65,26 +54,4 @@ td > div {
   display: block;
   font-size: 18px;
   color: green;
-}
-.btn {
-  cursor: pointer;
-  padding: 20px;
-  margin-bottom: 50px;
-  border-radius: 5px;
-  background-color: green;
-  font-size: 24px;
-  box-shadow: 0px 5px #000;
-}
-
-.btn:hover {
-  transform: translate(0px, 5px);
-  box-shadow: 0px 0px #000;
-}
-
-.textMinor {
-  display: block;
-  padding: 30px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
 }

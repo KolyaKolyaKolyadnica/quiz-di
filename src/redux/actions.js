@@ -14,11 +14,15 @@ const increasePlayerScore = createAction(
   })
 );
 
+const selectGame = createAction("game/selectGame");
+
 const playersActions = {
   addPlayer,
   deletePlayer,
   createStartScore,
   increasePlayerScore,
 };
+
+export const gameActions = { selectGame };
 
 export default playersActions;

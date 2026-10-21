@@ -5,42 +5,26 @@ import Navigation from "../../components/Navigation/Navigation";
 import ScoreEdit from "../../components/ScoreEdit";
 import style from "./PlayingField.module.css";
 
-function PlayingField({ game, backToMenu }) {
-  const { name, categories } = game;
-  const [playersControllerModal, setPlayersControllerModal] = useState(false);
-  const [doneQuestions, setDoneQuestions] = useState([]);
+function PlayingField({ game }) {
+  const { categories } = game.data;
   const [playersScoreModal, setPlayersScoreModal] = useState(false);
-  const [costOfQuestion, setCostOfQuestion] = useState(null);
-
-  const showScore = ({ question, cost }) => {
-    setPlayersScoreModal(!playersScoreModal);
-    setCostOfQuestion(null);
-
-    if (doneQuestions.includes(question)) {
-      return;
-    }
-
-    setDoneQuestions((prevQuestion) => [...prevQuestion, question]);
-    setCostOfQuestion(cost);
-  };
 
   return (
-    <div className={style.container}>
-      {/* <img src={require("../../assets/bg-owl.jpeg")} alt="owl" /> */}
+    <div
+      className={style.container}
+      style={{ backgroundImage: `url(${game.background})` }}
+    >
       <Navigation />
 
       <Quiz
         categories={categories}
-        showScore={showScore}
-        doneQuestions={doneQuestions}
+        images={game.images}
+        showScore={() => setPlayersScoreModal(true)}
       />
 
       {playersScoreModal && (
         <Modal onClose={() => alert("Вкажи хто правильно відповів")}>
-          <ScoreEdit
-            costOfQuestion={costOfQuestion}
-            closeModal={() => setPlayersScoreModal(!playersScoreModal)}
-          />
+          <ScoreEdit closeModal={() => setPlayersScoreModal(false)} />
         </Modal>
       )}
     </div>

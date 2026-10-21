@@ -43,30 +43,6 @@ button:hover {
   border-radius: 8px;
 }
 
-.greenBtn {
-  cursor: pointer;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  background-color: green;
-  font-size: 24px;
-  box-shadow: 0px 5px #000;
-}
-.redBtn {
-  cursor: pointer;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  background-color: rgb(205, 0, 0);
-  font-size: 24px;
-  box-shadow: 0px 5px #000;
-}
-.greenBtn:hover,
-.redBtn:hover {
-  transform: translate(0px, 5px);
-  box-shadow: 0px 0px #000;
-}
-
 ol,
 ul {
   display: flex;
