@@ -78,13 +78,12 @@ function QuizQuestion({ point, images, showScore }) {
               </p>
               <div className="modal-button-container">
                 <button
-                  className=""
                   onClick={() => {
                     showScore();
                     setShowModal(false);
                   }}
                 >
-                  Зарахувати бали.
+                  Зарахувати бали
                 </button>
               </div>
             </div>

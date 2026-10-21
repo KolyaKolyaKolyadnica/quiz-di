@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import games, { getGameById } from "../data/games";
@@ -23,6 +23,12 @@ function App() {
   const game = getGameById(selectedGameId);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    Object.entries(game.theme).forEach(([name, value]) =>
+      document.documentElement.style.setProperty(name, value)
+    );
+  }, [game]);
 
   const startGame = () => {
     if (players.length === 0) {
@@ -58,7 +64,10 @@ function App() {
                 ))}
               </div>
 
-              <button onClick={() => setShowModal(!showModal)}>
+              <button
+                className="logoButton"
+                onClick={() => setShowModal(!showModal)}
+              >
                 <img src={game.logo} alt={game.title} />
               </button>
             </div>

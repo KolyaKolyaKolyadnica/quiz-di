@@ -55,25 +55,29 @@ function Timer({ handleAnswer }) {
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;
 
+  const timeClassName = [
+    style.time,
+    isRunning && style.running,
+    ((isRunning && secondsLeft <= 10) || timeIsOver) && style.ending,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={style.container}>
-      <div className={style.time}>
+      <div className={timeClassName}>
         {minutes}:{seconds.toString().padStart(2, "0")}
       </div>
 
       <div className="modal-button-container">
         {!isRunning && !timeIsOver && (
-          <button
-            className={style.button}
-            onClick={handleStart}
-            disabled={isRunning}
-          >
+          <button onClick={handleStart} disabled={isRunning}>
             Старт
           </button>
         )}
 
         {(isRunning || timeIsOver) && (
-          <button className={style.button} onClick={handleAnswer}>
+          <button onClick={handleAnswer}>
             Далі
           </button>
         )}

@@ -31,7 +31,9 @@ function ScoreEdit({ closeModal }) {
       </div>
 
       <div className="modal-button-container">
-        <button onClick={() => closeModal()}>Ні хто не вгадав</button>
+        <button className="button-secondary" onClick={() => closeModal()}>
+          Ніхто не вгадав
+        </button>
       </div>
     </div>
   );

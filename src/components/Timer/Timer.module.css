@@ -2,24 +2,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 36px;
+  gap: 32px;
   width: 100%;
-  box-sizing: border-box;
 }
 .time {
-  font-size: 44px;
+  font-size: 56px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
   align-self: center;
-  color: green;
+  color: var(--text-muted);
+  transition: color var(--duration) var(--ease);
 }
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: fit-content;
-  max-width: 130px;
-  padding: 8px;
-  /* padding: 4px; */
-  /* background: var(--bg-gray-700); */
-  /* color: var(--white-500); */
-  /* border: 1px solid #000; */
+.running {
+  color: var(--accent);
+}
+.ending {
+  color: var(--danger);
+  animation: pulse 1s var(--ease) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.08);
+  }
 }

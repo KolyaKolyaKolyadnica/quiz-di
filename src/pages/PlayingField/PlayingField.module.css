@@ -6,10 +6,11 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  background-color: #000;
+  background-color: var(--bg);
+  animation: fadeIn 0.5s var(--ease);
 }
 th,
 td {
-  padding: 5px;
+  padding: 6px;
   border: none;
 }

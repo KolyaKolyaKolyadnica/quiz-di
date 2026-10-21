@@ -9,7 +9,10 @@ function Navigation() {
     <ol className={style.list}>
       {players.map((player, index) => (
         <li key={player + index} className={style.listItem}>
-          {player} : <span>{score[index]} балів</span>
+          {player}
+          <span key={score[index]} className={style.score}>
+            {score[index]}
+          </span>
         </li>
       ))}
     </ol>

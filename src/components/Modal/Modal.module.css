@@ -5,21 +5,27 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.5);
-  background-color: var(--bg-gray-500-10);
+  background-color: rgba(10, 12, 16, 0.7);
+  backdrop-filter: blur(6px);
   z-index: 99999;
+  animation: fadeIn 0.25s var(--ease);
 }
 .modal {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0.75);
-  width: auto;
-  height: auto;
+  transform: translate(-50%, -50%) scale(0.94);
+  opacity: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 40px;
-  transition: 0.2s all 0s linear;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 
-  background: var(--bg-gray-700);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 .modalOpen {
   transform: translate(-50%, -50%) scale(1);
