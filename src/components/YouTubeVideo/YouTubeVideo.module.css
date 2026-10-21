@@ -1,0 +1,54 @@
+.container {
+  position: relative;
+  width: min(800px, 70vw);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  border-radius: var(--radius-md);
+}
+
+.player {
+  position: absolute;
+  left: 0;
+  top: -25%;
+  width: 100%;
+  height: 150%;
+}
+
+.overlay,
+.overlay:hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 64px;
+  color: var(--text);
+  background: #000;
+  transform: none;
+  box-shadow: none;
+}
+.overlay > svg {
+  transition: transform 0.25s var(--ease), color var(--duration) var(--ease);
+}
+.overlay:hover > svg {
+  transform: scale(1.12);
+  color: var(--accent);
+}
+
+.overlayPlaying,
+.overlayPlaying:hover {
+  background: transparent;
+}
+.overlayPlaying > svg {
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+.overlayPlaying:hover > svg {
+  opacity: 0.8;
+}

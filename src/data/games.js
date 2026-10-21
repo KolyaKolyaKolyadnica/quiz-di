@@ -25,6 +25,7 @@ const pumpkinTheme = {
 // Щоб додати нову гру: створи json з питаннями в src/data,
 // поклади картинки в src/assets і додай сюди ще один об'єкт.
 // images — картинки до питань, ключ = значення "img"/"questionImg" у json.
+// Відео з YouTube до питання: "questionVideo": "<id з посилання після v=>".
 const games = [
   {
     id: "series",

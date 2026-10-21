@@ -4,31 +4,29 @@ import ringSound from "../../assets/mixkit-vintage-telephone-ringtone-1356.wav";
 
 const DURATION = 60;
 
-function Timer({ handleAnswer }) {
+// status: "idle" | "running" | "over", зберігається у батька,
+// щоб разом із таймером могло стартувати і зупинятися відео.
+function Timer({ status, onStatusChange, handleAnswer }) {
   const [secondsLeft, setSecondsLeft] = useState(DURATION);
-  const [isRunning, setIsRunning] = useState(false);
-  const [timeIsOver, setTimeIsOver] = useState(false);
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (status !== "running") return;
 
-    const intervalId = setInterval(() => {
-      setSecondsLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(intervalId);
-          setIsRunning(false);
-          setTimeIsOver(true);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    if (secondsLeft === 0) {
+      onStatusChange("over");
+      return;
+    }
 
-    return () => clearInterval(intervalId);
-  }, [isRunning]);
+    const timeoutId = setTimeout(
+      () => setSecondsLeft((prev) => prev - 1),
+      1000
+    );
+
+    return () => clearTimeout(timeoutId);
+  }, [status, secondsLeft, onStatusChange]);
 
   useEffect(() => {
-    if (!timeIsOver) return;
+    if (status !== "over") return;
 
     const audio = new Audio(ringSound);
     audio.currentTime = 0;
@@ -45,20 +43,16 @@ function Timer({ handleAnswer }) {
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [timeIsOver]);
-
-  const handleStart = () => {
-    setSecondsLeft(DURATION);
-    setIsRunning(true);
-  };
+  }, [status]);
 
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;
 
   const timeClassName = [
     style.time,
-    isRunning && style.running,
-    ((isRunning && secondsLeft <= 10) || timeIsOver) && style.ending,
+    status === "running" && style.running,
+    ((status === "running" && secondsLeft <= 10) || status === "over") &&
+      style.ending,
   ]
     .filter(Boolean)
     .join(" ");
@@ -70,17 +64,11 @@ function Timer({ handleAnswer }) {
       </div>
 
       <div className="modal-button-container">
-        {!isRunning && !timeIsOver && (
-          <button onClick={handleStart} disabled={isRunning}>
-            Старт
-          </button>
+        {status === "idle" && (
+          <button onClick={() => onStatusChange("running")}>Старт</button>
         )}
 
-        {(isRunning || timeIsOver) && (
-          <button onClick={handleAnswer}>
-            Далі
-          </button>
-        )}
+        {status !== "idle" && <button onClick={handleAnswer}>Далі</button>}
       </div>
     </div>
   );

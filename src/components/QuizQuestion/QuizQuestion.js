@@ -2,12 +2,14 @@ import { useState } from "react";
 import Modal from "../Modal";
 import style from "./QuizQuestion.module.css";
 import Timer from "../Timer";
+import YouTubeVideo from "../YouTubeVideo";
 
 function QuizQuestion({ point, images, showScore }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
+  const [timerStatus, setTimerStatus] = useState("idle");
 
-  const { cost, question, answer, img, questionImg } = point;
+  const { cost, question, answer, img, questionImg, questionVideo } = point;
 
   if (status === "cost") {
     return (
@@ -43,9 +45,18 @@ function QuizQuestion({ point, images, showScore }) {
                     alt="Ілюстрація до питання"
                   />
                 )}
+                {questionVideo && (
+                  <YouTubeVideo
+                    videoId={questionVideo}
+                    timerStatus={timerStatus}
+                    onStart={() => setTimerStatus("running")}
+                  />
+                )}
               </div>
 
               <Timer
+                status={timerStatus}
+                onStatusChange={setTimerStatus}
                 handleAnswer={() => {
                   setStatus("answer");
                 }}
