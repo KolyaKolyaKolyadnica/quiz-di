@@ -110,14 +110,12 @@ function PlayerPage({ roomCode }) {
   const queuePosition = game
     ? game.queue.findIndex(({ id }) => id === playerId)
     : -1;
-  const isWrong = Boolean(game && game.wrong.includes(playerId));
   const isEligible = Boolean(game && game.eligible.includes(playerId));
   const canPress =
     status === "connected" &&
     isEligible &&
     game.open &&
-    queuePosition === -1 &&
-    !isWrong;
+    queuePosition === -1;
 
   const buzz = () => {
     if (canPress) {
@@ -183,8 +181,6 @@ function PlayerPage({ roomCode }) {
   } else if (queuePosition > 0) {
     buttonText = `Ти ${queuePosition + 1}-й у черзі`;
     hint = `Зараз відповідає ${game.queue[0].name}`;
-  } else if (isWrong) {
-    buttonText = "Не вгадав";
   } else if (canPress) {
     buttonText = "Тисни!";
   }

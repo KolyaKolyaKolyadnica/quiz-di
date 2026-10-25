@@ -18,16 +18,31 @@ function QuizQuestion({ point, images, showScore }) {
 
   const playersList = useSelector((state) => state.playersList);
   const dispatch = useDispatch();
-  const { setBuzzerOpen, resetRound } = useHostRoom();
+  const { round, setBuzzerOpen, resetRound } = useHostRoom();
 
   const isAsking = status === "question" && showModal;
+  const hasAnswerer = round.queue.length > 0;
 
-  // buzzers are open while the timer runs
+  // buzzers stay open while someone answers, so others can queue up
   useEffect(() => {
     if (isAsking) {
-      setBuzzerOpen(timerStatus === "running");
+      setBuzzerOpen(timerStatus === "running" || timerStatus === "paused");
     }
   }, [isAsking, timerStatus, setBuzzerOpen]);
+
+  // pause while someone answers, resume once the queue is empty
+  useEffect(() => {
+    if (!isAsking) {
+      return;
+    }
+
+    if (timerStatus === "running" && hasAnswerer) {
+      setTimerStatus("paused");
+    }
+    if (timerStatus === "paused" && !hasAnswerer) {
+      setTimerStatus("running");
+    }
+  }, [isAsking, timerStatus, hasAnswerer]);
 
   useEffect(() => {
     if (isAsking) {

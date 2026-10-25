@@ -17,7 +17,7 @@ const HostRoomContext = createContext(null);
 
 export const useHostRoom = () => useContext(HostRoomContext);
 
-const emptyRound = { open: false, queue: [], wrong: [] };
+const emptyRound = { open: false, queue: [] };
 
 // Who can buzz: in team mode only players assigned to a team.
 const canBuzz = ({ mode, players }, playerId) => {
@@ -39,7 +39,7 @@ export function HostRoomProvider({ children }) {
   // "connecting" | "ready" | "error"
   const [status, setStatus] = useState("connecting");
   const [online, setOnline] = useState([]);
-  // queue: buzz order, first one answers now; wrong: already answered wrong
+  // queue: buzz order, the first one answers now
   const [round, setRound] = useState(emptyRound);
 
   // conn -> player id
@@ -57,7 +57,6 @@ export function HostRoomProvider({ children }) {
       id,
       name: players.find((player) => player.id === id)?.name || "?",
     })),
-    wrong: round.wrong,
     eligible: players
       .filter(({ id }) => canBuzz(playersList, id))
       .map(({ id }) => id),
@@ -116,11 +115,7 @@ export function HostRoomProvider({ children }) {
         }
 
         setRound((prev) => {
-          if (
-            !prev.open ||
-            prev.queue.includes(playerId) ||
-            prev.wrong.includes(playerId)
-          ) {
+          if (!prev.open || prev.queue.includes(playerId)) {
             return prev;
           }
 
@@ -200,13 +195,9 @@ export function HostRoomProvider({ children }) {
     []
   );
 
+  // the player may buzz again for another try
   const markWrong = useCallback(
-    () =>
-      setRound((prev) => ({
-        ...prev,
-        queue: prev.queue.slice(1),
-        wrong: [...prev.wrong, prev.queue[0]],
-      })),
+    () => setRound((prev) => ({ ...prev, queue: prev.queue.slice(1) })),
     []
   );
 

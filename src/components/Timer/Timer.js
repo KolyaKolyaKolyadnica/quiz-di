@@ -4,7 +4,7 @@ import ringSound from "../../assets/mixkit-vintage-telephone-ringtone-1356.wav";
 
 const DURATION = 60;
 
-// status: "idle" | "running" | "over", lives in the parent so the video can follow it
+// status: "idle" | "running" | "paused" | "over", lives in the parent so the video can follow it
 function Timer({ status, onStatusChange, handleAnswer }) {
   const [secondsLeft, setSecondsLeft] = useState(DURATION);
 

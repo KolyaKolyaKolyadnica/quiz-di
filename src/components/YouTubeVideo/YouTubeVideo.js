@@ -78,7 +78,7 @@ function YouTubeVideo({ videoId, timerStatus, onStart }) {
     if (timerStatus === "running") {
       playerRef.current.playVideo();
     }
-    if (timerStatus === "over") {
+    if (timerStatus === "paused" || timerStatus === "over") {
       playerRef.current.pauseVideo();
     }
   }, [isReady, timerStatus]);
