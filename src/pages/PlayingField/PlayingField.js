@@ -12,7 +12,10 @@ function PlayingField({ game }) {
   return (
     <div
       className={style.container}
-      style={{ backgroundImage: `url(${game.background})` }}
+      style={{
+        backgroundImage: `url(${game.background})`,
+        backgroundSize: game.backgroundSize,
+      }}
     >
       <Navigation />
 

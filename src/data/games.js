@@ -6,6 +6,7 @@ import SeriesBg from "../assets/owl-bg.jpg";
 import Koala from "../assets/koala.jpg";
 import Notr from "../assets/notr.png";
 import HalloweenLogo from "../assets/halloween.jpg";
+import HalloweenBg from "../assets/halloween-bg.jpg";
 
 // Game accent colors, applied to the CSS variables from index.css.
 const blueTheme = {
@@ -43,7 +44,9 @@ const games = [
     title: "Хелловін 🎃",
     data: halloween,
     logo: HalloweenLogo,
-    background: HalloweenLogo,
+    background: HalloweenBg,
+    // fill the whole screen instead of the default "contain"
+    backgroundSize: "cover",
     theme: pumpkinTheme,
     images: {},
   },
