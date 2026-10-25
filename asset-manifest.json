@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/quiz-di/static/css/main.fd5f55ae.css",
-    "main.js": "/quiz-di/static/js/main.18789e3a.js",
+    "main.css": "/quiz-di/static/css/main.636b00cd.css",
+    "main.js": "/quiz-di/static/js/main.48c3fc2e.js",
     "static/media/mixkit-vintage-telephone-ringtone-1356.wav": "/quiz-di/static/media/mixkit-vintage-telephone-ringtone-1356.9c1ed3138ef3bf87370c.wav",
     "static/media/notr.png": "/quiz-di/static/media/notr.6dcf86f5174f15c8afc7.png",
-    "static/media/halloween.jpg": "/quiz-di/static/media/halloween.b46ed66defb881efe70f.jpg",
+    "static/media/halloween-bg.jpg": "/quiz-di/static/media/halloween-bg.f33a07df68a0862c68cb.jpg",
     "static/media/koala.jpg": "/quiz-di/static/media/koala.9dbfad9d56b9370829e7.jpg",
+    "static/media/halloween-preview.jpeg": "/quiz-di/static/media/halloween-preview.2288b74e65a6e3818035.jpeg",
     "static/media/owl-bg.jpg": "/quiz-di/static/media/owl-bg.fc0d76075984eab2a5ac.jpg",
     "static/media/photo__x.jpg": "/quiz-di/static/media/photo_5319271719010766001_x.69cb13c406383762f402.jpg",
     "index.html": "/quiz-di/index.html",
-    "main.fd5f55ae.css.map": "/quiz-di/static/css/main.fd5f55ae.css.map",
-    "main.18789e3a.js.map": "/quiz-di/static/js/main.18789e3a.js.map"
+    "main.636b00cd.css.map": "/quiz-di/static/css/main.636b00cd.css.map",
+    "main.48c3fc2e.js.map": "/quiz-di/static/js/main.48c3fc2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd5f55ae.css",
-    "static/js/main.18789e3a.js"
+    "static/css/main.636b00cd.css",
+    "static/js/main.48c3fc2e.js"
   ]
 }
