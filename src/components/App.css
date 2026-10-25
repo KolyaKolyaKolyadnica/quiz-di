@@ -37,6 +37,8 @@
 .startMenuContainer > .logoButton,
 .startMenuContainer > .logoButton:hover {
   width: 40%;
+  /* fixed box so the game buttons don't move with the logo's aspect ratio */
+  height: 60vh;
   padding: 0;
   display: block;
   border: none;
