@@ -5,7 +5,7 @@ import SeriesLogo from "../assets/photo_5319271719010766001_x.jpg";
 import SeriesBg from "../assets/owl-bg.jpg";
 import Koala from "../assets/koala.jpg";
 import Notr from "../assets/notr.png";
-import HalloweenLogo from "../assets/halloween.jpg";
+import HalloweenLogo from "../assets/halloween-preview.jpeg";
 import HalloweenBg from "../assets/halloween-bg.jpg";
 
 // Game accent colors, applied to the CSS variables from index.css.
