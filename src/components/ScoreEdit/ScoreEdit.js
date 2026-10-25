@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import playersActions from "../../redux/actions";
+import { selectScorers } from "../../redux/selectors";
 import style from "./ScoreEdit.module.css";
 
 function ScoreEdit({ closeModal }) {
-  const players = useSelector((state) => state.playersList.players);
+  const scorers = useSelector(selectScorers);
 
   const dispatch = useDispatch();
 
-  const changeScore = (value, playerIndex) => {
-    dispatch(playersActions.increasePlayerScore(value, playerIndex));
+  const changeScore = (value, scorerId) => {
+    dispatch(playersActions.increaseScore(value, scorerId));
     closeModal();
   };
 
@@ -18,13 +19,13 @@ function ScoreEdit({ closeModal }) {
 
       <div className={style.listContainer}>
         <ul className={style.list}>
-          {players.map((player, index) => (
+          {scorers.map(({ id, name }) => (
             <li
-              key={player}
-              onClick={() => changeScore(1, index)}
+              key={id}
+              onClick={() => changeScore(1, id)}
               className={style.listItem}
             >
-              <span>{player}</span>+ {1}
+              <span>{name}</span>+ {1}
             </li>
           ))}
         </ul>

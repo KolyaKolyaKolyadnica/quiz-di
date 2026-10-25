@@ -115,3 +115,105 @@
 .startButton {
   width: 100%;
 }
+
+.room {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  font-size: 20px;
+  background-color: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+.room > button {
+  font-size: 16px;
+  padding: 10px 16px;
+}
+.roomCode {
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+.roomStatus {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.roomStatusOk {
+  color: var(--success);
+}
+
+.modeSelect {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.modeSelect > button {
+  font-size: 18px;
+  padding: 10px 18px;
+  background-color: transparent;
+  color: var(--text-muted);
+}
+.modeSelect > button:hover {
+  background-color: var(--surface);
+  color: var(--text);
+  box-shadow: none;
+}
+.modeSelect > .modeActive,
+.modeSelect > .modeActive:hover {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.teams {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+.team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 14px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+
+.playerName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.playerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--border);
+}
+.dotOnline {
+  background-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+.teamSelect {
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+}

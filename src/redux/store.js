@@ -30,7 +30,7 @@ const middleware = [
 const persistConfig = {
   key: "players",
   storage,
-  // blacklist: ["score"], //Всё таки оставлю что бы смотреть прошлые результаты
+  // blacklist: ["score"], // kept persisted to see past results
 };
 
 const gamePersistConfig = {

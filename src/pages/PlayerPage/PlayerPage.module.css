@@ -1,0 +1,134 @@
+.container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px 16px;
+  background: var(--bg);
+  animation: fadeIn 0.5s var(--ease);
+}
+
+.joinForm {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+}
+.joinForm > input {
+  font: inherit;
+  font-size: 22px;
+  color: var(--text);
+  background-color: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.joinForm > input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.header {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.name {
+  font-size: 24px;
+  font-weight: 800;
+}
+.status {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.statusOk {
+  color: var(--success);
+}
+
+.buzzer,
+.buzzer:hover {
+  width: min(72vw, 320px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-muted);
+  background-color: var(--surface-2);
+  border: 4px solid var(--border);
+  box-shadow: none;
+  transform: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.buzzer:disabled {
+  cursor: default;
+}
+.buzzerActive,
+.buzzerActive:hover {
+  color: var(--on-accent);
+  background-color: var(--accent);
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 48px var(--accent-glow);
+  animation: pulse 1.2s var(--ease) infinite;
+}
+.buzzerActive:active {
+  transform: scale(0.94);
+}
+.buzzerAnswering,
+.buzzerAnswering:hover {
+  color: #0b1f12;
+  background-color: var(--success);
+  border-color: var(--success);
+}
+.buzzerQueued,
+.buzzerQueued:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.hint {
+  min-height: 1.5em;
+  font-size: 20px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.scoreboard {
+  width: 100%;
+  max-width: 400px;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+.scoreboard > li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: var(--surface);
+  border-radius: var(--radius-sm);
+}
+.scoreboard span {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.04);
+  }
+}

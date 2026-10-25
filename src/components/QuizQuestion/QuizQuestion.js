@@ -1,13 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal";
 import style from "./QuizQuestion.module.css";
 import Timer from "../Timer";
 import YouTubeVideo from "../YouTubeVideo";
+import BuzzQueue from "../BuzzQueue";
+import playersActions from "../../redux/actions";
+import { getScorerId } from "../../redux/selectors";
+import { useHostRoom } from "../../room/HostRoom";
 
 function QuizQuestion({ point, images, showScore }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
   const [timerStatus, setTimerStatus] = useState("idle");
+  // points already awarded via a player's buzzer
+  const [isAwarded, setIsAwarded] = useState(false);
+
+  const playersList = useSelector((state) => state.playersList);
+  const dispatch = useDispatch();
+  const { setBuzzerOpen, resetRound } = useHostRoom();
+
+  const isAsking = status === "question" && showModal;
+
+  // buzzers are open while the timer runs
+  useEffect(() => {
+    if (isAsking) {
+      setBuzzerOpen(timerStatus === "running");
+    }
+  }, [isAsking, timerStatus, setBuzzerOpen]);
+
+  useEffect(() => {
+    if (isAsking) {
+      return resetRound;
+    }
+  }, [isAsking, resetRound]);
+
+  const awardPlayer = (playerId) => {
+    const scorerId = getScorerId(playersList, playerId);
+
+    if (scorerId) {
+      dispatch(playersActions.increaseScore(1, scorerId));
+    }
+    setIsAwarded(true);
+    setStatus("answer");
+  };
 
   const { cost, question, answer, img, questionImg, questionVideo } = point;
 
@@ -54,6 +90,8 @@ function QuizQuestion({ point, images, showScore }) {
                 )}
               </div>
 
+              <BuzzQueue onCorrect={awardPlayer} />
+
               <Timer
                 status={timerStatus}
                 onStatusChange={setTimerStatus}
@@ -74,7 +112,13 @@ function QuizQuestion({ point, images, showScore }) {
         <td></td>
 
         {showModal && (
-          <Modal onClose={() => alert("Тицьни на кнопку 'Зарахувати бали'")}>
+          <Modal
+            onClose={() =>
+              isAwarded
+                ? setShowModal(false)
+                : alert("Тицьни на кнопку 'Зарахувати бали'")
+            }
+          >
             <div className={style.container}>
               <p className={style.textMain}>
                 <span className={style.textComment}>Відповідь:</span>
@@ -88,14 +132,18 @@ function QuizQuestion({ point, images, showScore }) {
                 )}
               </p>
               <div className="modal-button-container">
-                <button
-                  onClick={() => {
-                    showScore();
-                    setShowModal(false);
-                  }}
-                >
-                  Зарахувати бали
-                </button>
+                {isAwarded ? (
+                  <button onClick={() => setShowModal(false)}>Далі</button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      showScore();
+                      setShowModal(false);
+                    }}
+                  >
+                    Зарахувати бали
+                  </button>
+                )}
               </div>
             </div>
           </Modal>

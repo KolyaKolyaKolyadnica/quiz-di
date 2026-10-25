@@ -7,7 +7,7 @@ import Koala from "../assets/koala.jpg";
 import Notr from "../assets/notr.png";
 import HalloweenLogo from "../assets/halloween.jpg";
 
-// Кольори акценту гри, підставляються в CSS-змінні з index.css.
+// Game accent colors, applied to the CSS variables from index.css.
 const blueTheme = {
   "--accent": "#3a72e0",
   "--accent-hover": "#4c84f0",
@@ -22,10 +22,8 @@ const pumpkinTheme = {
   "--on-accent": "#16120a",
 };
 
-// Щоб додати нову гру: створи json з питаннями в src/data,
-// поклади картинки в src/assets і додай сюди ще один об'єкт.
-// images — картинки до питань, ключ = значення "img"/"questionImg" у json.
-// Відео з YouTube до питання: "questionVideo": "<id з посилання після v=>".
+// New game: add questions json to src/data, images to src/assets, and an entry here.
+// images: key = "img"/"questionImg" value in json; YouTube: "questionVideo": "<id after v=>".
 const games = [
   {
     id: "series",

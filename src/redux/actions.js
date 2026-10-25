@@ -1,28 +1,50 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, nanoid } from "@reduxjs/toolkit";
 
-const addPlayer = createAction("players/addPlayer");
+// id is passed for players joining from their device, otherwise generated
+const addPlayer = createAction("players/addPlayer", (name, id = nanoid()) => ({
+  payload: { id, name },
+}));
 const deletePlayer = createAction("players/deletePlayer");
+const setPlayerTeam = createAction(
+  "players/setPlayerTeam",
+  (playerId, teamId) => ({
+    payload: { playerId, teamId },
+  })
+);
+
+const addTeam = createAction("players/addTeam", (name) => ({
+  payload: { id: nanoid(), name },
+}));
+const deleteTeam = createAction("players/deleteTeam");
+
+// "solo" — everyone for themselves, "teams" — points go to the player's team
+const setMode = createAction("players/setMode");
 
 const createStartScore = createAction("players/createStartScore");
-const increasePlayerScore = createAction(
-  "players/increasePlayerScore",
-  (value, index) => ({
+const increaseScore = createAction(
+  "players/increaseScore",
+  (value, scorerId) => ({
     payload: {
       value,
-      index,
+      scorerId,
     },
   })
 );
 
 const selectGame = createAction("game/selectGame");
+const setRoomCode = createAction("game/setRoomCode");
 
 const playersActions = {
   addPlayer,
   deletePlayer,
+  setPlayerTeam,
+  addTeam,
+  deleteTeam,
+  setMode,
   createStartScore,
-  increasePlayerScore,
+  increaseScore,
 };
 
-export const gameActions = { selectGame };
+export const gameActions = { selectGame, setRoomCode };
 
 export default playersActions;

@@ -18,7 +18,7 @@ function App() {
   const [page, setPage] = useState(pages.MENU);
   const [showModal, setShowModal] = useState(false);
 
-  const players = useSelector((state) => state.playersList.players);
+  const { players, teams, mode } = useSelector((state) => state.playersList);
   const selectedGameId = useSelector((state) => state.game.selectedId);
   const game = getGameById(selectedGameId);
 
@@ -35,11 +35,28 @@ function App() {
       alert("Ну хочаб одного гравця введи :(");
       return;
     }
+
+    if (mode === "teams") {
+      if (teams.length === 0) {
+        alert("Створи хоча б одну команду");
+        return;
+      }
+
+      const teamless = players.filter((player) => !player.teamId);
+      if (teamless.length > 0) {
+        alert(
+          `Розподіли по командах: ${teamless.map(({ name }) => name).join(", ")}`
+        );
+        return;
+      }
+    }
+
     setPage(pages.PLAY);
 
     setShowModal(!showModal);
 
-    dispatch(playersActions.createStartScore(players));
+    const scorers = mode === "teams" ? teams : players;
+    dispatch(playersActions.createStartScore(scorers.map(({ id }) => id)));
   };
 
   const closeModal = () => {
