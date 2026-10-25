@@ -77,7 +77,7 @@ function YouTubeVideo({ videoId, start = 0, timerStatus, onStart }) {
       return;
     }
 
-    if (timerStatus === "running") {
+    if (timerStatus === "running" || timerStatus === "watching") {
       playerRef.current.playVideo();
     }
     if (timerStatus === "paused" || timerStatus === "over") {

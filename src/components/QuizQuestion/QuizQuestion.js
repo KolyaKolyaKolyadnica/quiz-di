@@ -62,7 +62,18 @@ function QuizQuestion({ point, images, showScore }) {
       celebrate({ name: scorer.name });
     }
     setIsAwarded(true);
+  };
+
+  const awardAndShowAnswer = (playerId) => {
+    awardPlayer(playerId);
     setStatus("answer");
+  };
+
+  // timer stops and buzzers close, the video keeps playing
+  const awardAndWatch = (playerId) => {
+    awardPlayer(playerId);
+    resetRound();
+    setTimerStatus("watching");
   };
 
   const {
@@ -119,7 +130,12 @@ function QuizQuestion({ point, images, showScore }) {
                 )}
               </div>
 
-              <BuzzQueue onCorrect={awardPlayer} />
+              {!isAwarded && (
+                <BuzzQueue
+                  onCorrect={awardAndShowAnswer}
+                  onCorrectWatch={questionVideo ? awardAndWatch : null}
+                />
+              )}
 
               <Timer
                 status={timerStatus}

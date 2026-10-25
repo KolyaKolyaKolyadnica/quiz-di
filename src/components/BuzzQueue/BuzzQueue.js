@@ -3,7 +3,8 @@ import { useHostRoom } from "../../room/HostRoom";
 import style from "./BuzzQueue.module.css";
 
 // Buzz queue: the first one answers, "wrong" passes the turn to the next.
-function BuzzQueue({ onCorrect }) {
+// onCorrectWatch (video questions only): award and keep watching the video.
+function BuzzQueue({ onCorrect, onCorrectWatch }) {
   const { online, round, markWrong } = useHostRoom();
   const { players, teams, mode } = useSelector((state) => state.playersList);
 
@@ -49,6 +50,14 @@ function BuzzQueue({ onCorrect }) {
           >
             Вірно
           </button>
+          {onCorrectWatch && (
+            <button
+              className={style.correct}
+              onClick={() => onCorrectWatch(answeringId)}
+            >
+              Вірно + відео
+            </button>
+          )}
           <button className={style.wrong} onClick={markWrong}>
             Невірно
           </button>
