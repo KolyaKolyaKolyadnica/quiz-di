@@ -21,7 +21,8 @@ const loadYouTubeApi = () => {
   return apiPromise;
 };
 
-function YouTubeVideo({ videoId, timerStatus, onStart }) {
+// start: seconds to begin the video from
+function YouTubeVideo({ videoId, start = 0, timerStatus, onStart }) {
   const wrapperRef = useRef(null);
   const playerRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
@@ -52,6 +53,7 @@ function YouTubeVideo({ videoId, timerStatus, onStart }) {
           modestbranding: 1,
           playsinline: 1,
           rel: 0,
+          start,
         },
         events: {
           onReady: () => setIsReady(true),
@@ -68,7 +70,7 @@ function YouTubeVideo({ videoId, timerStatus, onStart }) {
       playerRef.current?.destroy();
       playerRef.current = null;
     };
-  }, [videoId]);
+  }, [videoId, start]);
 
   useEffect(() => {
     if (!isReady) {

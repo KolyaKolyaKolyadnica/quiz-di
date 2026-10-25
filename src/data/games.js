@@ -24,6 +24,7 @@ const pumpkinTheme = {
 
 // New game: add questions json to src/data, images to src/assets, and an entry here.
 // images: key = "img"/"questionImg" value in json; YouTube: "questionVideo": "<id after v=>".
+// Optional "videoStart": seconds to start the video from.
 const games = [
   {
     id: "series",

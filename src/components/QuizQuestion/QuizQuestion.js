@@ -65,7 +65,15 @@ function QuizQuestion({ point, images, showScore }) {
     setStatus("answer");
   };
 
-  const { cost, question, answer, img, questionImg, questionVideo } = point;
+  const {
+    cost,
+    question,
+    answer,
+    img,
+    questionImg,
+    questionVideo,
+    videoStart,
+  } = point;
 
   if (status === "cost") {
     return (
@@ -104,6 +112,7 @@ function QuizQuestion({ point, images, showScore }) {
                 {questionVideo && (
                   <YouTubeVideo
                     videoId={questionVideo}
+                    start={videoStart}
                     timerStatus={timerStatus}
                     onStart={() => setTimerStatus("running")}
                   />
