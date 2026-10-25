@@ -8,6 +8,7 @@ import BuzzQueue from "../BuzzQueue";
 import playersActions from "../../redux/actions";
 import { getScorerId } from "../../redux/selectors";
 import { useHostRoom } from "../../room/HostRoom";
+import { celebrate } from "../../effects/celebrate";
 
 function QuizQuestion({ point, images, showScore }) {
   const [status, setStatus] = useState("cost");
@@ -54,7 +55,11 @@ function QuizQuestion({ point, images, showScore }) {
     const scorerId = getScorerId(playersList, playerId);
 
     if (scorerId) {
+      const { players, teams } = playersList;
+      const scorer = [...players, ...teams].find(({ id }) => id === scorerId);
+
       dispatch(playersActions.increaseScore(1, scorerId));
+      celebrate({ name: scorer.name });
     }
     setIsAwarded(true);
     setStatus("answer");
