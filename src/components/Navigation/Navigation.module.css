@@ -5,7 +5,7 @@
   flex-direction: row;
   width: 100%;
   gap: 16px;
-  padding: 20px;
+  padding: 16px;
   list-style: none;
 }
 .listItem {
