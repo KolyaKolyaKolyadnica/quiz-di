@@ -74,6 +74,13 @@ td > div {
   white-space: pre-line;
   animation: fadeIn 0.4s var(--ease);
 }
+.rebus {
+  font-size: 120px;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-align: center;
+  animation: fadeIn 0.4s var(--ease);
+}
 .textComment {
   display: block;
   font-size: 18px;

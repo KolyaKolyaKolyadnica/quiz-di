@@ -90,6 +90,7 @@ function QuizQuestion({ point, images, showScore, onDone }) {
     questionImg,
     questionVideo,
     videoStart,
+    rebus,
   } = point;
 
   if (status === "cost") {
@@ -144,6 +145,7 @@ function QuizQuestion({ point, images, showScore, onDone }) {
             >
               <div className={style.questionContainer}>
                 <p className={style.textMain}>{question}</p>
+                {rebus && <p className={style.rebus}>{rebus}</p>}
                 {questionImg && (
                   <img
                     className={style.image}
