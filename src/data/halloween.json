@@ -51,8 +51,8 @@
         {
           "cost": "8. Пісня",
           "question": "Що це за пісня? Назвіть виконавця і назву.",
-          "questionVideo": "LApul_2xjEc",
-          "answer": "Rocky Horror Picture Show – Time Warp"
+          "questionVideo": "ZhIsAZO5gl0",
+          "answer": "Kiss – I Was Made For Lovin' You"
         },
         {
           "cost": "9. Фільм",
@@ -107,8 +107,8 @@
         {
           "cost": "17. Пісня",
           "question": "Що це за пісня? Назвіть виконавця і назву.",
-          "questionVideo": "gEYgyWC_BpM",
-          "answer": "Bette Midler – Come Little Children\n\nЗ фільму «Гокус-Покус» (1993)."
+          "questionVideo": "QUvVdTlA23w",
+          "answer": "Marilyn Manson – Sweet Dreams"
         },
         {
           "cost": "18. Фільм",
@@ -128,8 +128,8 @@
         {
           "cost": "20. Пісня",
           "question": "Що це за пісня? Назвіть виконавця і назву.",
-          "questionVideo": "-La9S-ubqZw",
-          "answer": "Lou Reed – Halloween Parade\n\n1989 рік, пісня про хелловінський парад у Нью-Йорку."
+          "questionVideo": "1V_xRb0x9aw",
+          "answer": "Gorillaz – Clint Eastwood"
         },
         {
           "cost": "21. Фільм",
@@ -145,8 +145,9 @@
         {
           "cost": "23. Пісня",
           "question": "Що це за пісня? Назвіть виконавця і назву.",
-          "questionVideo": "ly5xTFEFUwY",
-          "answer": "The Rolling Stones – Paint It Black\n\nУ першій серії «Венздей» героїня грає її на віолончелі."
+          "questionVideo": "zMUfYaOc9fo",
+          "videoStart": 39,
+          "answer": "Gloria Gaynor – I Will Survive"
         },
         {
           "cost": "24. Фільм",
@@ -167,9 +168,9 @@
         {
           "cost": "26. Пісня",
           "question": "Що це за пісня? Назвіть виконавця і назву.",
-          "questionVideo": "xGaZBfJOyAc",
-          "videoStart": 52,
-          "answer": "Lady Gaga – The Dead Dance"
+          "questionVideo": "tMDFv5m18Pw",
+          "videoStart": 22,
+          "answer": "Ozzy Osbourne – Crazy Train"
         },
         {
           "cost": "27. Фільм",
