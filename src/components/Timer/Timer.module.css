@@ -21,6 +21,22 @@
   animation: pulse 1s var(--ease) infinite;
 }
 
+/* key changes every tick, so the pop replays for each digit */
+.countdown {
+  animation: pop 1s var(--ease);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @keyframes pulse {
   50% {
     transform: scale(1.08);

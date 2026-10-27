@@ -3,10 +3,28 @@ import style from "./Timer.module.css";
 import ringSound from "../../assets/mixkit-vintage-telephone-ringtone-1356.wav";
 
 const DURATION = 60;
+// seconds before auto-start, gives players a moment to read the question
+const START_DELAY = 3;
 
 // status: "idle" | "running" | "paused" | "watching" | "over", lives in the parent so the video can follow it
 function Timer({ status, onStatusChange, handleAnswer }) {
   const [secondsLeft, setSecondsLeft] = useState(DURATION);
+  const [delayLeft, setDelayLeft] = useState(START_DELAY);
+
+  useEffect(() => {
+    if (status !== "idle") {
+      return;
+    }
+
+    if (delayLeft === 0) {
+      onStatusChange("running");
+      return;
+    }
+
+    const timeoutId = setTimeout(() => setDelayLeft((prev) => prev - 1), 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [status, delayLeft, onStatusChange]);
 
   useEffect(() => {
     if (status !== "running") {
@@ -62,13 +80,19 @@ function Timer({ status, onStatusChange, handleAnswer }) {
 
   return (
     <div className={style.container}>
-      <div className={timeClassName}>
-        {minutes}:{seconds.toString().padStart(2, "0")}
-      </div>
+      {status === "idle" ? (
+        <div key={delayLeft} className={`${style.time} ${style.countdown}`}>
+          {delayLeft}
+        </div>
+      ) : (
+        <div className={timeClassName}>
+          {minutes}:{seconds.toString().padStart(2, "0")}
+        </div>
+      )}
 
       <div className="modal-button-container">
         {status === "idle" && (
-          <button onClick={() => onStatusChange("running")}>Старт</button>
+          <button onClick={() => onStatusChange("running")}>Старт зараз</button>
         )}
 
         {status !== "idle" && <button onClick={handleAnswer}>Далі</button>}
