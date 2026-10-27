@@ -10,7 +10,8 @@ import { getScorerId } from "../../redux/selectors";
 import { useHostRoom } from "../../room/HostRoom";
 import { celebrate } from "../../effects/celebrate";
 
-function QuizQuestion({ point, images, showScore }) {
+// onDone: called once, when the question card is closed for good
+function QuizQuestion({ point, images, showScore, onDone }) {
   const [status, setStatus] = useState("cost");
   const [showModal, setShowModal] = useState(true);
   const [timerStatus, setTimerStatus] = useState("idle");
@@ -50,6 +51,11 @@ function QuizQuestion({ point, images, showScore }) {
       return resetRound;
     }
   }, [isAsking, resetRound]);
+
+  const closeQuestion = () => {
+    setShowModal(false);
+    onDone();
+  };
 
   const awardPlayer = (playerId) => {
     const scorerId = getScorerId(playersList, playerId);
@@ -106,7 +112,7 @@ function QuizQuestion({ point, images, showScore }) {
                 "Пропустити це питання? (воно буде прибране і бали не зарахуються нікому)"
               );
               if (isOk) {
-                setShowModal(false);
+                closeQuestion();
               }
             }}
           >
@@ -160,7 +166,7 @@ function QuizQuestion({ point, images, showScore }) {
           <Modal
             onClose={() =>
               isAwarded
-                ? setShowModal(false)
+                ? closeQuestion()
                 : alert("Тицьни на кнопку 'Зарахувати бали'")
             }
           >
@@ -178,12 +184,12 @@ function QuizQuestion({ point, images, showScore }) {
               </p>
               <div className="modal-button-container">
                 {isAwarded ? (
-                  <button onClick={() => setShowModal(false)}>Далі</button>
+                  <button onClick={closeQuestion}>Далі</button>
                 ) : (
                   <button
                     onClick={() => {
                       showScore();
-                      setShowModal(false);
+                      closeQuestion();
                     }}
                   >
                     Зарахувати бали

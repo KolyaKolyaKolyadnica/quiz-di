@@ -9,6 +9,12 @@
   background-color: var(--bg);
   animation: fadeIn 0.5s var(--ease);
 }
+.finishButton {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+}
 th,
 td {
   padding: 6px;

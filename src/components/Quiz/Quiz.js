@@ -1,7 +1,7 @@
 import QuizCategory from "../QuizCategory";
 import style from "./Quiz.module.css";
 
-function Quiz({ categories, images, showScore }) {
+function Quiz({ categories, images, showScore, onQuestionDone }) {
   return (
     <div className={style.container}>
       <table className={style.table}>
@@ -13,6 +13,7 @@ function Quiz({ categories, images, showScore }) {
                   category={category}
                   images={images}
                   showScore={showScore}
+                  onQuestionDone={onQuestionDone}
                 />
               </tr>
             );

@@ -1,6 +1,6 @@
 import QuizQuestion from "../QuizQuestion";
 
-function QuizCategory({ category, images, showScore }) {
+function QuizCategory({ category, images, showScore, onQuestionDone }) {
   return (
     <>
       {category.points.map((point, idx) => {
@@ -10,6 +10,7 @@ function QuizCategory({ category, images, showScore }) {
             point={point}
             images={images}
             showScore={showScore}
+            onDone={onQuestionDone}
           />
         );
       })}

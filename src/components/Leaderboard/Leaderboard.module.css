@@ -1,0 +1,124 @@
+.container {
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.title {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+}
+/* 3rd rises first, the winner last */
+.step {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  animation: rise 0.6s var(--ease) backwards;
+}
+.names {
+  gap: 4px;
+  list-style: none;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.medal {
+  font-size: 48px;
+  line-height: 1;
+}
+.score {
+  color: var(--success);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.place1 {
+  animation-delay: 1s;
+}
+.place1 .names {
+  font-size: 32px;
+}
+.place1 .block {
+  height: 200px;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 32px var(--accent-glow);
+}
+.place1 .score {
+  color: var(--on-accent);
+}
+.place2 {
+  animation-delay: 0.6s;
+}
+.place2 .block {
+  height: 150px;
+}
+.place3 {
+  animation-delay: 0.2s;
+}
+.place3 .block {
+  height: 110px;
+}
+
+.rest {
+  width: 100%;
+  max-width: 684px;
+  gap: 8px;
+  list-style: none;
+  animation: fadeInUp 0.4s var(--ease) 1.4s backwards;
+}
+.restItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  font-size: 24px;
+  font-weight: 600;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+.restPlace {
+  min-width: 1.5em;
+  color: var(--text-muted);
+  font-weight: 800;
+}
+.restNames {
+  flex-grow: 1;
+}
+.restItem .score {
+  font-size: 24px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
