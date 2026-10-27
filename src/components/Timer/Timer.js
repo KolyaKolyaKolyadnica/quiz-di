@@ -4,7 +4,7 @@ import ringSound from "../../assets/mixkit-vintage-telephone-ringtone-1356.wav";
 
 const DURATION = 60;
 // seconds before auto-start, gives players a moment to read the question
-const START_DELAY = 3;
+const START_DELAY = 1;
 
 // status: "idle" | "running" | "paused" | "watching" | "over", lives in the parent so the video can follow it
 // inline: time and buttons in one row, to save height
@@ -39,7 +39,7 @@ function Timer({ status, onStatusChange, handleAnswer, inline = false }) {
 
     const timeoutId = setTimeout(
       () => setSecondsLeft((prev) => prev - 1),
-      1000
+      1000,
     );
 
     return () => clearTimeout(timeoutId);
