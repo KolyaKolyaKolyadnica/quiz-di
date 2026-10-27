@@ -111,6 +111,7 @@ function PlayerPage({ roomCode }) {
     ? game.queue.findIndex(({ id }) => id === playerId)
     : -1;
   const isEligible = Boolean(game && game.eligible.includes(playerId));
+  const teamName = game?.playerTeams?.[playerId];
   const canPress =
     status === "connected" &&
     isEligible &&
@@ -201,7 +202,14 @@ function PlayerPage({ roomCode }) {
   return (
     <div className={style.container}>
       <header className={style.header}>
-        <span className={style.name}>{name}</span>
+        <div className={style.who}>
+          <span className={style.name}>{name}</span>
+          {teamName && (
+            <span key={teamName} className={style.team}>
+              Команда: {teamName}
+            </span>
+          )}
+        </div>
         <span
           className={`${style.status} ${
             status === "connected" ? style.statusOk : ""

@@ -47,7 +47,7 @@ export function HostRoomProvider({ children }) {
   const playersListRef = useRef(playersList);
   playersListRef.current = playersList;
 
-  const { players, mode } = playersList;
+  const { players, teams, mode } = playersList;
 
   const stateMessage = {
     type: "state",
@@ -60,6 +60,18 @@ export function HostRoomProvider({ children }) {
     eligible: players
       .filter(({ id }) => canBuzz(playersList, id))
       .map(({ id }) => id),
+    // { [player id]: team name }, so each player sees their own team
+    playerTeams:
+      mode === "teams"
+        ? Object.fromEntries(
+            players
+              .map(({ id, teamId }) => [
+                id,
+                teams.find((team) => team.id === teamId)?.name,
+              ])
+              .filter(([, teamName]) => teamName)
+          )
+        : {},
     scoreboard: scorers,
   };
   const stateMessageRef = useRef(stateMessage);

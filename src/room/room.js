@@ -20,4 +20,4 @@ export const getRoomFromUrl = () =>
 export const RETRY_DELAY = 3000;
 
 // player -> host: { type: "hello", id, name }, { type: "buzz" }
-// host -> player: { type: "state", ...buzzer state and score }, { type: "kicked" }
+// host -> player: { type: "state", ...buzzer state, teams and score }, { type: "kicked" }
