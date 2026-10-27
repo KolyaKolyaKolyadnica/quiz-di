@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/quiz-di/static/css/main.636b00cd.css",
-    "main.js": "/quiz-di/static/js/main.fca5b9a3.js",
+    "main.css": "/quiz-di/static/css/main.bcdd8046.css",
+    "main.js": "/quiz-di/static/js/main.d980fadd.js",
     "static/media/mixkit-vintage-telephone-ringtone-1356.wav": "/quiz-di/static/media/mixkit-vintage-telephone-ringtone-1356.9c1ed3138ef3bf87370c.wav",
     "static/media/notr.png": "/quiz-di/static/media/notr.6dcf86f5174f15c8afc7.png",
     "static/media/halloween-bg.jpg": "/quiz-di/static/media/halloween-bg.f33a07df68a0862c68cb.jpg",
@@ -10,11 +10,11 @@
     "static/media/owl-bg.jpg": "/quiz-di/static/media/owl-bg.fc0d76075984eab2a5ac.jpg",
     "static/media/photo__x.jpg": "/quiz-di/static/media/photo_5319271719010766001_x.69cb13c406383762f402.jpg",
     "index.html": "/quiz-di/index.html",
-    "main.636b00cd.css.map": "/quiz-di/static/css/main.636b00cd.css.map",
-    "main.fca5b9a3.js.map": "/quiz-di/static/js/main.fca5b9a3.js.map"
+    "main.bcdd8046.css.map": "/quiz-di/static/css/main.bcdd8046.css.map",
+    "main.d980fadd.js.map": "/quiz-di/static/js/main.d980fadd.js.map"
   },
   "entrypoints": [
-    "static/css/main.636b00cd.css",
-    "static/js/main.fca5b9a3.js"
+    "static/css/main.bcdd8046.css",
+    "static/js/main.d980fadd.js"
   ]
 }
