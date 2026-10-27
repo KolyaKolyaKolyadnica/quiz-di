@@ -41,6 +41,21 @@ td > div {
   align-items: center;
   gap: 40px;
 }
+/* video question: big video, buzz queue and timer in one row below */
+.videoContainer {
+  max-width: none;
+  gap: 24px;
+}
+.videoFooter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+.videoQueue {
+  flex-grow: 1;
+  min-width: 0;
+}
 .questionContainer {
   display: flex;
   flex-direction: column;

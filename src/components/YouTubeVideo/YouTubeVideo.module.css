@@ -1,6 +1,7 @@
 .container {
   position: relative;
-  width: min(800px, 70vw);
+  /* as big as the wide modal allows, leaving ~300px for question text and timer */
+  width: min(calc(96vw - 48px), calc((100vh - 300px) * 16 / 9));
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #000;

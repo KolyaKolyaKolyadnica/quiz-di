@@ -5,6 +5,15 @@
   gap: 32px;
   width: 100%;
 }
+.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: auto;
+}
+.inline > :global(.modal-button-container) {
+  width: auto;
+}
 .time {
   font-size: 56px;
   font-weight: 800;

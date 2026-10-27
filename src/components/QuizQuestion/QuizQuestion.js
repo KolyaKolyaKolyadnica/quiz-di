@@ -101,12 +101,33 @@ function QuizQuestion({ point, images, showScore, onDone }) {
   }
 
   if (status === "question") {
+    const isVideo = Boolean(questionVideo);
+
+    const buzzQueue = !isAwarded && (
+      <BuzzQueue
+        onCorrect={awardAndShowAnswer}
+        onCorrectWatch={isVideo ? awardAndWatch : null}
+      />
+    );
+
+    const timer = (
+      <Timer
+        status={timerStatus}
+        onStatusChange={setTimerStatus}
+        handleAnswer={() => {
+          setStatus("answer");
+        }}
+        inline={isVideo}
+      />
+    );
+
     return (
       <>
         <td></td>
 
         {showModal && (
           <Modal
+            wide={isVideo}
             onClose={() => {
               const isOk = window.confirm(
                 "Пропустити це питання? (воно буде прибране і бали не зарахуються нікому)"
@@ -116,7 +137,11 @@ function QuizQuestion({ point, images, showScore, onDone }) {
               }
             }}
           >
-            <div className={style.container}>
+            <div
+              className={`${style.container} ${
+                isVideo ? style.videoContainer : ""
+              }`}
+            >
               <div className={style.questionContainer}>
                 <p className={style.textMain}>{question}</p>
                 {questionImg && (
@@ -136,20 +161,17 @@ function QuizQuestion({ point, images, showScore, onDone }) {
                 )}
               </div>
 
-              {!isAwarded && (
-                <BuzzQueue
-                  onCorrect={awardAndShowAnswer}
-                  onCorrectWatch={questionVideo ? awardAndWatch : null}
-                />
+              {isVideo ? (
+                <div className={style.videoFooter}>
+                  <div className={style.videoQueue}>{buzzQueue}</div>
+                  {timer}
+                </div>
+              ) : (
+                <>
+                  {buzzQueue}
+                  {timer}
+                </>
               )}
-
-              <Timer
-                status={timerStatus}
-                onStatusChange={setTimerStatus}
-                handleAnswer={() => {
-                  setStatus("answer");
-                }}
-              />
             </div>
           </Modal>
         )}

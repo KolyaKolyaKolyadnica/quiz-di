@@ -7,7 +7,8 @@ const DURATION = 60;
 const START_DELAY = 3;
 
 // status: "idle" | "running" | "paused" | "watching" | "over", lives in the parent so the video can follow it
-function Timer({ status, onStatusChange, handleAnswer }) {
+// inline: time and buttons in one row, to save height
+function Timer({ status, onStatusChange, handleAnswer, inline = false }) {
   const [secondsLeft, setSecondsLeft] = useState(DURATION);
   const [delayLeft, setDelayLeft] = useState(START_DELAY);
 
@@ -79,7 +80,7 @@ function Timer({ status, onStatusChange, handleAnswer }) {
     .join(" ");
 
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${inline ? style.inline : ""}`}>
       {status === "idle" ? (
         <div key={delayLeft} className={`${style.time} ${style.countdown}`}>
           {delayLeft}

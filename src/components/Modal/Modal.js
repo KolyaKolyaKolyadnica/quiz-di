@@ -5,7 +5,8 @@ import style from "./Modal.module.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
-function Modal({ children, onClose }) {
+// wide: almost full screen with less padding, e.g. for video questions
+function Modal({ children, onClose, wide = false }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeByEsc = (e) => {
@@ -32,7 +33,11 @@ function Modal({ children, onClose }) {
 
   return createPortal(
     <div className={style.overlay} onClick={clickOnOverlay}>
-      <div className={`${style.modal} ${isOpen ? style.modalOpen : ""}`}>
+      <div
+        className={`${style.modal} ${wide ? style.wide : ""} ${
+          isOpen ? style.modalOpen : ""
+        }`}
+      >
         {children}
       </div>
     </div>,
